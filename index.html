@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upkeep Labs — Software Development & Consulting</title>
+  <meta name="description" content="Upkeep Labs builds software, consults on software projects, and operates Flight Deck Labs — an Etsy shop for flight sim enthusiasts.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-bg: #0f1117;
+      --color-surface: #1a1d27;
+      --color-border: #2a2d3a;
+      --color-text: #e4e4e7;
+      --color-text-muted: #9ca3af;
+      --color-accent: #6366f1;
+      --color-accent-hover: #818cf8;
+      --color-main-bg: #f5f3f0;
+      --color-main-text: #1c1917;
+      --color-main-muted: #57534e;
+      --color-main-border: #d6d3d1;
+      --color-main-surface: #ffffff;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--color-bg);
+      color: var(--color-text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    main {
+      background: var(--color-main-bg);
+      color: var(--color-main-text);
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Header */
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    header .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .logo span {
+      color: var(--color-accent);
+    }
+
+    nav a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      margin-left: 32px;
+      transition: color 0.2s;
+    }
+
+    nav a:hover { color: var(--color-text); }
+
+    /* Hero */
+    .hero {
+      padding: 100px 0 80px;
+      text-align: center;
+      background: var(--color-main-bg);
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+      color: var(--color-main-text);
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--color-main-muted);
+      max-width: 560px;
+      margin: 0 auto 36px;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--color-bg);
+      color: #fff;
+      padding: 12px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s;
+    }
+
+    .hero-cta:hover { background: #2a2d3a; }
+
+    /* Services */
+    .services {
+      padding: 80px 0;
+      background: #eae7e3;
+    }
+
+    .section-label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+
+    .services h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 48px;
+      color: var(--color-main-text);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--color-main-surface);
+      border: 1px solid var(--color-main-border);
+      border-radius: 12px;
+      padding: 32px 28px;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .service-card:hover {
+      border-color: var(--color-accent);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      background: rgba(99, 102, 241, 0.1);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      font-size: 1.25rem;
+    }
+
+    .service-card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: var(--color-main-text);
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--color-main-muted);
+      line-height: 1.7;
+    }
+
+    .service-card a {
+      display: inline-block;
+      margin-top: 16px;
+      color: var(--color-accent);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .service-card a:hover { color: var(--color-accent-hover); }
+
+    /* About */
+    .about {
+      padding: 80px 0;
+      background: var(--color-main-bg);
+    }
+
+    .about h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+      color: var(--color-main-text);
+    }
+
+    .about p {
+      color: var(--color-main-muted);
+      max-width: 640px;
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .about p + p {
+      margin-top: 16px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--color-border);
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    footer p {
+      color: var(--color-text-muted);
+      font-size: 0.8rem;
+    }
+
+    footer a {
+      color: var(--color-text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    footer a:hover { color: var(--color-text); }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+    }
+
+    /* Mobile */
+    @media (max-width: 600px) {
+      header .container { flex-direction: column; gap: 16px; }
+      nav a { margin-left: 16px; }
+      nav a:first-child { margin-left: 0; }
+      .hero { padding: 64px 0 48px; }
+      .services { padding: 48px 0; }
+      .about { padding: 48px 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container">
+      <a href="/" class="logo">Upkeep<span>Labs</span></a>
+      <nav>
+        <a href="#services">Services</a>
+        <a href="#about">About</a>
+        <a href="mailto:hello@upkeeplabs.dev">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>We build and improve software.</h1>
+        <p>Upkeep Labs is a software studio that develops products, advises on technical strategy, and builds for communities we care about.</p>
+        <a href="mailto:hello@upkeeplabs.dev" class="hero-cta">Get in touch</a>
+      </div>
+    </section>
+
+    <section class="services" id="services">
+      <div class="container">
+        <p class="section-label">What we do</p>
+        <h2>Our Services</h2>
+        <div class="services-grid">
+
+          <div class="service-card">
+            <div class="service-icon">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#6366f1" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            </div>
+            <h3>Software Development</h3>
+            <p>We design and build web and mobile applications from concept to launch. Modern stacks, clean code, and a focus on shipping products that work.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#6366f1" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            </div>
+            <h3>Consulting</h3>
+            <p>Technical strategy, architecture reviews, and hands-on guidance for teams building software. We help you make better decisions faster.</p>
+          </div>
+
+          <div class="service-card">
+            <div class="service-icon">
+              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#6366f1" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3>Flight Deck Labs</h3>
+            <p>Our Etsy shop serving the flight simulation community with curated accessories and gear for home cockpit builders and virtual pilots.</p>
+            <a href="https://flightdecklabs.etsy.com" target="_blank" rel="noopener">Visit the shop &rarr;</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container">
+        <p class="section-label">About us</p>
+        <h2>Built by builders.</h2>
+        <p>Upkeep Labs is a small, focused studio. We write software for clients, build our own products, and run an e-commerce brand for a community we love. We believe in shipping quality work, keeping things simple, and staying close to the craft.</p>
+        <p>Whether you need a development partner, a technical advisor, or flight sim accessories — we'd love to hear from you.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Upkeep Labs. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="https://flightdecklabs.etsy.com" target="_blank" rel="noopener">Flight Deck Labs</a>
+        <a href="mailto:hello@upkeeplabs.dev">hello@upkeeplabs.dev</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

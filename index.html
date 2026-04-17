@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Upkeep Labs — Software Development & Consulting</title>
-  <meta name="description" content="Upkeep Labs builds software, consults on software projects, and operates Flight Deck Labs — an Etsy shop for flight sim enthusiasts.">
+  <title>Upkeep Labs — Software Studio</title>
+  <meta name="description" content="Upkeep Labs is a software studio building FlightPack, Beyond the Commit, and Flight Deck Labs — products and content for communities we care about.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
 
     :root {
       --color-bg: #0f1117;
@@ -117,12 +119,7 @@
 
     .hero-cta:hover { background: #2a2d3a; }
 
-    /* Services */
-    .services {
-      padding: 80px 0;
-      background: #eae7e3;
-    }
-
+    /* Section shared */
     .section-label {
       font-size: 0.8rem;
       font-weight: 600;
@@ -132,7 +129,13 @@
       margin-bottom: 12px;
     }
 
-    .services h2 {
+    /* Our Work */
+    .work {
+      padding: 80px 0;
+      background: #eae7e3;
+    }
+
+    .work h2 {
       font-size: 1.75rem;
       font-weight: 700;
       letter-spacing: -0.02em;
@@ -140,51 +143,72 @@
       color: var(--color-main-text);
     }
 
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-    }
-
-    .service-card {
+    /* Venture Cards — shared layout */
+    .venture-card {
       background: var(--color-main-surface);
       border: 1px solid var(--color-main-border);
       border-radius: 12px;
-      padding: 32px 28px;
+      overflow: hidden;
+      display: flex;
       transition: box-shadow 0.2s, border-color 0.2s;
     }
 
-    .service-card:hover {
+    .venture-card:hover {
       border-color: var(--color-accent);
       box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
     }
 
-    .service-icon {
-      width: 44px;
-      height: 44px;
-      background: rgba(99, 102, 241, 0.1);
-      border-radius: 10px;
+    .venture-card-logo {
+      width: 180px;
+      flex-shrink: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 20px;
-      font-size: 1.25rem;
+      padding: 28px;
     }
 
-    .service-card h3 {
-      font-size: 1.1rem;
+    .venture-card-logo img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+    }
+
+    .venture-card-body {
+      flex: 1;
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .badge {
+      display: inline-block;
+      width: fit-content;
+      font-size: 0.65rem;
       font-weight: 600;
-      margin-bottom: 10px;
-      color: var(--color-main-text);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      background: rgba(99, 102, 241, 0.1);
+      color: var(--color-accent);
+      padding: 2px 8px;
+      border-radius: 99px;
+      margin-bottom: 8px;
     }
 
-    .service-card p {
+    .venture-card-body h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--color-main-text);
+      margin-bottom: 8px;
+    }
+
+    .venture-card-body p {
       font-size: 0.9rem;
       color: var(--color-main-muted);
       line-height: 1.7;
     }
 
-    .service-card a {
+    .venture-card-body a {
       display: inline-block;
       margin-top: 16px;
       color: var(--color-accent);
@@ -194,7 +218,74 @@
       transition: color 0.2s;
     }
 
-    .service-card a:hover { color: var(--color-accent-hover); }
+    .venture-card-body a:hover { color: var(--color-accent-hover); }
+
+    /* Featured card (FlightPack) — full width with stats bar */
+    .featured-card {
+      background: var(--color-main-surface);
+      border: 1px solid var(--color-main-border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      transition: box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .featured-card:hover {
+      border-color: var(--color-accent);
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .featured-card-top {
+      display: flex;
+    }
+
+    .featured-card-top .venture-card-logo {
+      width: 180px;
+    }
+
+    .featured-card h3 {
+      font-size: 1.3rem;
+    }
+
+    .stats-bar {
+      background: #f0ede9;
+      border-top: 1px solid var(--color-main-border);
+      padding: 14px 28px;
+      display: flex;
+      gap: 32px;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-label {
+      font-size: 0.65rem;
+      color: var(--color-main-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .stat-value {
+      font-size: 0.8rem;
+      color: var(--color-main-text);
+      margin-top: 2px;
+    }
+
+    .stat-value a {
+      color: var(--color-accent);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .stat-value a:hover { color: var(--color-accent-hover); }
+
+    /* Standard cards grid */
+    .standard-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
 
     /* About */
     .about {
@@ -252,6 +343,7 @@
     .footer-links {
       display: flex;
       gap: 24px;
+      flex-wrap: wrap;
     }
 
     /* Mobile */
@@ -260,7 +352,12 @@
       nav a { margin-left: 16px; }
       nav a:first-child { margin-left: 0; }
       .hero { padding: 64px 0 48px; }
-      .services { padding: 48px 0; }
+      .work { padding: 48px 0; }
+      .venture-card { flex-direction: column; }
+      .venture-card-logo { width: 100% !important; height: 160px; }
+      .featured-card-top { flex-direction: column; }
+      .featured-card-top .venture-card-logo { width: 100% !important; height: 160px; }
+      .stats-bar { flex-direction: column; gap: 12px; align-items: center; }
       .about { padding: 48px 0; }
     }
   </style>
@@ -271,7 +368,7 @@
     <div class="container">
       <a href="/" class="logo">Upkeep<span>Labs</span></a>
       <nav>
-        <a href="#services">Services</a>
+        <a href="#work">Our Work</a>
         <a href="#about">About</a>
         <a href="mailto:hello@upkeeplabs.dev">Contact</a>
       </nav>
@@ -281,53 +378,77 @@
   <main>
     <section class="hero">
       <div class="container">
-        <h1>We build and improve software.</h1>
-        <p>Upkeep Labs is a software studio that develops products, advises on technical strategy, and builds for communities we care about.</p>
+        <h1>We build things we care about.</h1>
+        <p>A software studio crafting products, tools, and content for communities we believe in.</p>
         <a href="mailto:hello@upkeeplabs.dev" class="hero-cta">Get in touch</a>
       </div>
     </section>
 
-    <section class="services" id="services">
+    <section class="work" id="work">
       <div class="container">
-        <p class="section-label">What we do</p>
-        <h2>Our Services</h2>
-        <div class="services-grid">
+        <p class="section-label">Our Work</p>
+        <h2>What we're building</h2>
 
-          <div class="service-card">
-            <div class="service-icon">
-              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#6366f1" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        <div class="featured-card">
+          <div class="featured-card-top">
+            <div class="venture-card-logo">
+              <img src="images/flightpack-icon.png" alt="FlightPack app icon">
             </div>
-            <h3>Software Development</h3>
-            <p>We design and build web and mobile applications from concept to launch. Modern stacks, clean code, and a focus on shipping products that work.</p>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">
-              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#6366f1" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <div class="venture-card-body">
+              <div class="badge">Launching Soon</div>
+              <h3>FlightPack</h3>
+              <p>AI-powered flight training companion for desktop flight simulators. Real-time phase scoring, detailed debrief analysis, and long-term progress tracking.</p>
             </div>
-            <h3>Consulting</h3>
-            <p>Technical strategy, architecture reviews, and hands-on guidance for teams building software. We help you make better decisions faster.</p>
           </div>
-
-          <div class="service-card">
-            <div class="service-icon">
-              <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="#6366f1" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          <div class="stats-bar">
+            <div class="stat">
+              <div class="stat-label">Platform</div>
+              <div class="stat-value">Desktop + Web</div>
             </div>
-            <h3>Flight Deck Labs</h3>
-            <p>Our Etsy shop serving the flight simulation community with curated accessories and gear for home cockpit builders and virtual pilots.</p>
-            <a href="https://flightdecklabs.etsy.com" target="_blank" rel="noopener">Visit the shop &rarr;</a>
+            <div class="stat">
+              <div class="stat-label">Simulators</div>
+              <div class="stat-value">MSFS &middot; X-Plane</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Link</div>
+              <div class="stat-value"><a href="https://flightpack.app" target="_blank" rel="noopener">flightpack.app &rarr;</a></div>
+            </div>
           </div>
-
         </div>
+
+        <div class="standard-cards">
+          <div class="venture-card">
+            <div class="venture-card-logo">
+              <img src="images/btc-logo.png" alt="Beyond the Commit logo">
+            </div>
+            <div class="venture-card-body">
+              <h3>Beyond the Commit</h3>
+              <p>A newsletter exploring the craft of software development — the decisions, trade-offs, and lessons learned along the way.</p>
+              <a href="https://beyondthecommit.com" target="_blank" rel="noopener">beyondthecommit.com &rarr;</a>
+            </div>
+          </div>
+
+          <div class="venture-card">
+            <div class="venture-card-logo">
+              <img src="images/fdl-logo.png" alt="Flight Deck Labs logo">
+            </div>
+            <div class="venture-card-body">
+              <h3>Flight Deck Labs</h3>
+              <p>3D printed accessories and gear for flight sim enthusiasts. Mounts, panels, and cockpit upgrades for home setups.</p>
+              <a href="https://flightdecklabs.etsy.com" target="_blank" rel="noopener">Visit the shop &rarr;</a>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
     <section class="about" id="about">
       <div class="container">
-        <p class="section-label">About us</p>
+        <p class="section-label">About</p>
         <h2>Built by builders.</h2>
-        <p>Upkeep Labs is a small, focused studio. We write software for clients, build our own products, and run an e-commerce brand for a community we love. We believe in shipping quality work, keeping things simple, and staying close to the craft.</p>
-        <p>Whether you need a development partner, a technical advisor, or flight sim accessories — we'd love to hear from you.</p>
+        <p>Upkeep Labs is a small, focused studio. We write software, build products, and create for communities we care about. We believe in shipping quality work, keeping things simple, and staying close to the craft.</p>
+        <p>We also partner with teams on software development and technical strategy. If you're building something and need a hand, we'd love to hear from you.</p>
       </div>
     </section>
   </main>
@@ -336,6 +457,8 @@
     <div class="container">
       <p>&copy; 2026 Upkeep Labs. All rights reserved.</p>
       <div class="footer-links">
+        <a href="https://flightpack.app" target="_blank" rel="noopener">FlightPack</a>
+        <a href="https://beyondthecommit.com" target="_blank" rel="noopener">Beyond the Commit</a>
         <a href="https://flightdecklabs.etsy.com" target="_blank" rel="noopener">Flight Deck Labs</a>
         <a href="mailto:hello@upkeeplabs.dev">hello@upkeeplabs.dev</a>
       </div>
